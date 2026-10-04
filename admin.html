@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Dashboard · AISIN.support</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<!-- body carries "eng-on" permanently: this whole page IS the admin
+     view, so the stage/delete buttons are always visible here, with
+     no checkbox needed (that toggle only made sense on the old
+     single-page version). -->
+<body class="eng-on">
+<header class="top">
+  <a class="brand" href="index.html"><img src="logo.png" alt="AISIN logo"><span>AISIN AUTOMOTIVE HARIYANA PRIVATE LTD</span></a>
+  <span class="admin-badge">Admin / IT view</span>
+</header>
+
+<main class="grid admin-grid">
+  <section class="card status">
+    <h2>Live status</h2>
+
+    <label class="filter-label">Filter by location
+      <select id="locFilter">
+        <option value="All">All locations</option>
+        <option>Bengalure</option>
+        <option>Ahmedabad</option>
+        <option>Routhak</option>
+        <option>Pune</option>
+        <option>Other</option>
+      </select>
+    </label>
+
+    <div class="chart">
+      <svg viewBox="0 0 36 36" id="donut"></svg>
+      <div class="total"><strong id="total">0</strong><small>issues</small></div>
+    </div>
+    <ul class="legend">
+      <li><i class="d p"></i>Pending <b id="cP">0</b></li>
+      <li><i class="d r"></i>Processing <b id="cR">0</b></li>
+      <li><i class="d c"></i>Complete <b id="cC">0</b></li>
+    </ul>
+  </section>
+</main>
+
+<section class="board">
+  <div class="lane"><h3><i class="d p"></i>Pending</h3><div id="laneP"></div></div>
+  <div class="lane"><h3><i class="d r"></i>Processing</h3><div id="laneR"></div></div>
+  <div class="lane"><h3><i class="d c"></i>Complete</h3><div id="laneC"></div></div>
+</section>
+
+<footer>© <span id="yr"></span> AISIN.support · IT &amp; Digitalization</footer>
+<script src="dashboard.js"></script>
+</body>
+</html>

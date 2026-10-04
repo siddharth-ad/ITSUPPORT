@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AISIN.support</title>
+<link rel="icon" type="image/png" href="logo.png">
+<!-- Step 2: browser tab icon = your logo. Replace logo.svg (or use logo.png) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#"><img src="logo.png" alt="AISIN logo"><span>AISIN AUTOMOTIVE HARIYANA PRIVATE LTD</span></a>
+  <button class="link-btn admin-btn" id="adminOpenBtn" type="button">IT / Admin</button>
+</header>
+
+<!-- ================= ADMIN SIGN-IN BOX =================
+     Hidden by default because of the "hidden" attribute below.
+     form.js removes "hidden" when the button above is clicked, and
+     puts it back on Cancel or after a successful sign-in. -->
+<div class="modal-overlay" id="adminOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+    <h2 id="adminTitle">IT / Admin sign in</h2>
+    <p class="modal-sub">Enter your credentials to open the status dashboard.</p>
+
+    <form id="adminForm">
+      <label>Username<input id="adminUser" required autocomplete="username"></label>
+      <label>Password<input id="adminPass" type="password" required autocomplete="current-password"></label>
+      <p class="modal-error" id="adminError" role="alert"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="adminCancel">Cancel</button>
+        <button type="submit" class="btn">Sign in</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Something broken?<br>Tell us. We'll fix it.</h1>
+    <p>Raise an IT issue and watch it move from Pending to Complete, live.</p>
+    <div class="bubble" id="joke">Have you tried turning it off and on again?</div>
+  </div>
+  <!-- Cartoon robot mascot "Bolt" (pure SVG + CSS animation) -->
+  <svg class="bolt" viewBox="0 0 200 220" aria-label="Bolt the support robot">
+    <line x1="100" y1="18" x2="100" y2="44" stroke="#0b3d91" stroke-width="5"/>
+    <circle class="ball" cx="100" cy="14" r="8" fill="#ff8a00"/>
+    <rect x="45" y="44" width="110" height="80" rx="24" fill="#fff" stroke="#0b3d91" stroke-width="6"/>
+    <g class="eyes"><circle cx="78" cy="82" r="11" fill="#0b3d91"/><circle cx="122" cy="82" r="11" fill="#0b3d91"/>
+    <circle cx="82" cy="78" r="3.5" fill="#fff"/><circle cx="126" cy="78" r="3.5" fill="#fff"/></g>
+    <path d="M82 106q18 14 36 0" stroke="#0b3d91" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <rect x="58" y="132" width="84" height="66" rx="18" fill="#0b3d91"/>
+    <circle cx="100" cy="165" r="12" fill="#ff8a00"/>
+    <g class="wave"><rect x="140" y="138" width="44" height="14" rx="7" fill="#0b3d91"/></g>
+    <rect x="16" y="140" width="44" height="14" rx="7" fill="#0b3d91"/>
+    <rect x="72" y="198" width="20" height="16" rx="6" fill="#0b3d91"/><rect x="108" y="198" width="20" height="16" rx="6" fill="#0b3d91"/>
+  </svg>
+  <svg class="gear" viewBox="0 0 24 24" fill="#ff8a00"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm9 5v-2l-2.2-.6a7 7 0 0 0-.7-1.7l1.2-2-1.4-1.4-2 1.2a7 7 0 0 0-1.7-.7L13 3h-2l-.6 2.2a7 7 0 0 0-1.7.7l-2-1.2-1.4 1.4 1.2 2a7 7 0 0 0-.7 1.7L3 11v2l2.2.6c.2.6.4 1.2.7 1.7l-1.2 2 1.4 1.4 2-1.2c.5.3 1.1.5 1.7.7L11 21h2l.6-2.2c.6-.2 1.2-.4 1.7-.7l2 1.2 1.4-1.4-1.2-2c.3-.5.5-1.1.7-1.7L21 13Z"/></svg>
+</section>
+
+
+
+<!-- This page is now ONLY the form. No status, no chart, no other
+     people's tickets - that all lives on admin.html instead. -->
+<main class="solo-wrap">
+  <section class="card solo-card">
+    <h2>Raise an issue</h2>
+    <p class="solo-sub">Tell us what's wrong. Our IT team will pick it up and keep it moving until it's fixed.</p>
+
+    <form id="form">
+      <label>Your name<input id="name" required maxlength="40"></label>
+      <label>Department<input id="dept" required maxlength="30" placeholder="e.g. Production"></label>
+      <div class="row">
+        <label>Category<select id="cat"><option>Network</option><option>Hardware</option><option>Software</option><option>Email</option><option>Access / Password</option><option>Other</option></select></label>
+        <label>Location<select id="loc"><option>Bengalure</option><option>Ahmedabad</option><option>Routhak</option><option>Pune</option><option>Other</option></select></label>
+        <label>Priority<select id="pri"><option>Low</option><option selected>Medium</option><option>High</option></select></label>
+      </div>
+      <label>What's wrong?<textarea id="desc" required rows="4" maxlength="300"></textarea></label>
+      <button class="btn">Submit issue</button>
+
+      <!-- form.js fills this in after a successful submit; it's not a
+           page redirect, just a message that appears in place. -->
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<footer>© <span id="yr"></span> AISIN.support · IT &amp; Digitalization</footer>
+<script src="form.js"></script>
+</body>
+</html>
